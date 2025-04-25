@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Banking System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="left-panel">
+    <div class="overlay-text">
+      <h1>Welcome to Banking System</h1>
+      <p>Manage accounts. Process transactions. Visualize balances.</p>
+    </div>
+  </div>
+  <div class="right-panel">
+    <div class="login-box">
+      <h2>Sign in</h2>
+      {% if error is defined and error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+      <form method="POST" action="/login">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+
+    </div>
+  </div>
+</body>
+</html>

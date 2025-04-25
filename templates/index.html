@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Banking System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-6xl bg-white rounded-3xl shadow-2xl p-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- Left: Account Overview -->
+    <div>
+      <h1 class="text-3xl font-extrabold text-gray-800 mb-6">Banking Dashboard</h1>
+
+      <h2 class="text-xl font-semibold mb-3">All Accounts</h2>
+      <table class="w-full text-left border border-gray-200 rounded-xl overflow-hidden">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-3">ID</th>
+            <th class="p-3">Name</th>
+            <th class="p-3">Balance</th>
+          </tr>
+        </thead>
+        <tbody id="accounts-table-body" class="bg-white divide-y divide-gray-100">
+          <!-- Dynamic rows -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Right: Forms -->
+    <div class="space-y-10">
+      <!-- Create Account -->
+      <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+        <h2 class="text-lg font-semibold mb-4">Create New Account</h2>
+        <form id="createAccountForm" class="space-y-4">
+          <input type="text" id="accountId" placeholder="ID" required class="w-full border rounded-lg p-2">
+          <input type="text" id="accountName" placeholder="Name" required class="w-full border rounded-lg p-2">
+          <input type="number" id="accountBalance" placeholder="Balance" required class="w-full border rounded-lg p-2">
+          <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Create</button>
+        </form>
+      </div>
+
+      <!-- Create Transaction -->
+      <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+        <h2 class="text-lg font-semibold mb-4">Create Transaction</h2>
+        <form id="transactionForm" class="space-y-4">
+          <select id="txType" class="w-full border rounded-lg p-2">
+            <option value="deposit">Deposit</option>
+            <option value="withdraw">Withdraw</option>
+            <option value="transfer">Transfer</option>
+          </select>
+          <input type="text" id="fromAcc" placeholder="From Account" required class="w-full border rounded-lg p-2">
+          <input type="number" id="amount" placeholder="Amount" required class="w-full border rounded-lg p-2">
+          <input type="text" id="toAcc" placeholder="To Account (for transfer)" class="w-full border rounded-lg p-2">
+          <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Add Transaction</button>
+        </form>
+      </div>
+
+      <!-- Process Queue -->
+      <button onclick="processQueue()" class="w-full bg-orange-500 text-white py-3 rounded-xl text-lg font-semibold hover:bg-orange-600">
+        Process All Transactions
+      </button>
+    </div>
+
+  </div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>
